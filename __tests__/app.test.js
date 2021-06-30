@@ -51,7 +51,7 @@ describe('07 demo routes', () => {
     expect(res.body).toEqual(order);
   });
 
-  it.only('gets all orders', async () => {
+  it('gets all orders', async () => {
     const order1 = await Order.insert({
       item: 'bear',
       quantity: 7
@@ -69,10 +69,11 @@ describe('07 demo routes', () => {
     console.log('hello, Mr Bond', order1);
 
     const res = await request(app).get('/api/v1/orders');
+    console.log('res.body', res.body);
     expect(res.body).toEqual([order1, order2, order3]);
   });
 
-  it.skip('Updates an order', async () => {
+  it('Updates an order', async () => {
     const order = await Order.insert({
       quantity: 4
     });

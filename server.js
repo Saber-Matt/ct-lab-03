@@ -1,5 +1,5 @@
 import app from './lib/app.js';
-import pool from './lib/utils/pool.js';
+import pool from './lib/utils/pools.js';
 
 const PORT = process.env.PORT || 7890;
 
