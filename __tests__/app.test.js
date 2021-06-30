@@ -1,14 +1,14 @@
-const pool = require('../lib/utils/pool');
-const setup = require('../data/setup');
-const request = require('supertest');
-const app = require('../lib/app');
-const Order = require('../lib/models/Order')
+import pool from '../lib/utils/pools.js';
+import setup from '../data/setup.js';
+import request from 'supertest';
+import app from '../lib/app.js';
+import Order from '../lib/models/Order.js';
 
-jest.mock('twilio', () => () => ({
-  messages: {
-    create: jest.fn(),
-  },
-}));
+// jest.mock('twilio', () => () => ({
+//   messages: {
+//     create: jest.fn(),
+//   },
+// }));
 
 describe('07 demo routes', () => {
   beforeEach(() => {
@@ -51,24 +51,28 @@ describe('07 demo routes', () => {
     expect(res.body).toEqual(order);
   });
 
-  it('gets all orders', async () => {
+  it.only('gets all orders', async () => {
     const order1 = await Order.insert({
+      item: 'bear',
       quantity: 7
     });
 
     const order2 = await Order.insert({
+      item: 'porage',
       quantity: 2
     });
 
     const order3 = await Order.insert({
+      item: 'trousers',
       quantity: 14
     });
+    console.log('hello, Mr Bond', order1);
 
     const res = await request(app).get('/api/v1/orders');
     expect(res.body).toEqual([order1, order2, order3]);
   });
 
-  it('Updates an order', async () => {
+  it.skip('Updates an order', async () => {
     const order = await Order.insert({
       quantity: 4
     });

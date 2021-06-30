@@ -1,4 +1,3 @@
-
 import app from './lib/app.js';
 import pool from './lib/utils/pool.js';
 
