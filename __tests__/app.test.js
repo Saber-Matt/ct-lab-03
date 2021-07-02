@@ -15,7 +15,7 @@ describe('07 demo routes', () => {
     return setup(pool);
   });
 
-  it.only('creates a new order in our database and sends a text message', async () => {
+  it('creates a new order in our database and sends a text message', async () => {
     const res = await request(app)
       .post('/api/v1/orders')
       .send({
@@ -43,6 +43,7 @@ describe('07 demo routes', () => {
 
   it('Deletes an order by id via', async () => {
     const order = await Order.insert({
+      item: 'TransformStreamDefaultController',
       quantity: 10
     });
 
@@ -74,6 +75,7 @@ describe('07 demo routes', () => {
 
   it('Updates an order', async () => {
     const order = await Order.insert({
+      item: 'CareBear',
       quantity: 4
     });
 
