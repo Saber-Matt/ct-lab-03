@@ -15,7 +15,7 @@ describe('07 demo routes', () => {
     return setup(pool);
   });
 
-  it('creates a new order in our database and sends a text message', async () => {
+  it.only('creates a new order in our database and sends a text message', async () => {
     const res = await request(app)
       .post('/api/v1/orders')
       .send({
