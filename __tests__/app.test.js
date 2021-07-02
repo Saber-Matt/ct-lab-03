@@ -69,7 +69,6 @@ describe('07 demo routes', () => {
     console.log('hello, Mr Bond', order1);
 
     const res = await request(app).get('/api/v1/orders');
-    console.log('res.body', res.body);
     expect(res.body).toEqual([order1, order2, order3]);
   });
 
